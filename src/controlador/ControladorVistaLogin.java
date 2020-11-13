@@ -4,6 +4,7 @@ import vista.VistaLogin;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import modelo.ConsultasUsuario;
@@ -104,7 +105,13 @@ public class ControladorVistaLogin implements MouseListener{
             if(ConsultasUsuario.buscarLogin(ModeloUsuario)==true){ //Si encontro al usuairo
                 //El ModeloUsuario y alleno sus campos faltantes con la busqueda (nombre y tipo)
                 //Ya solo desplegarlos y dar la bienvenida
-                JOptionPane.showMessageDialog(null, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1); //1 = tipo de icono
+                
+                final JDialog dialog = new JDialog();
+                dialog.setAlwaysOnTop(true);    
+                JOptionPane.showMessageDialog(dialog, "Here I am");
+                
+                // JOptionPane.showMessageDialog(null, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1); 
+                //1 = tipo de icono
             }else{ //usuario no existe o contraseña incorrecta
                 JOptionPane.showConfirmDialog(null, "Usuario o Password Incorrectos");
             }
