@@ -45,9 +45,10 @@ public class VistaLogin extends JFrame{
 
     JLabel LblRemember = new JLabel("Recordar Usuario");
     JCheckBox ChkRecordar = new JCheckBox();
-    JTextField TxtUsuario = new JTextField();
+    public JTextField TxtUsuario = new JTextField();
     public JPasswordField TxtPassword = new JPasswordField();
-    JButton BtnLogin = new JButton("Login");
+    public JButton BtnLogin = new JButton("Login");
+    public JButton BtnCerrar = new JButton("X");
     
     
     public VistaLogin(){
@@ -87,6 +88,7 @@ public class VistaLogin extends JFrame{
     GridBagConstraints l = new GridBagConstraints();
     GridBagConstraints m = new GridBagConstraints();
     GridBagConstraints n = new GridBagConstraints();
+    GridBagConstraints o = new GridBagConstraints();
     
     private void agregarComponentes() {
         LblLogin.setLayout(new GridBagLayout());
@@ -133,6 +135,7 @@ public class VistaLogin extends JFrame{
         d.gridy = 0;
         d.insets = new Insets(200,200,0,0);
         LblLogin.add(BtnLogin, d);
+        
         
         
         // LblUsuarioIcon
@@ -190,6 +193,15 @@ public class VistaLogin extends JFrame{
         l.insets = new Insets(200,80,0,0);
         ChkRecordar.setOpaque(false);
         LblLogin.add(ChkRecordar, l);
+        
+        
+        
+        // BtnCerrar
+        o.fill = GridBagConstraints.CENTER;
+        o.gridx = 0;
+        o.gridy = 0;
+        o.insets = new Insets(-315,-320,0,0);
+        LblLogin.add(BtnCerrar, o);
         
         ImageThingCosa.add(LblLogin);
         this.pack();

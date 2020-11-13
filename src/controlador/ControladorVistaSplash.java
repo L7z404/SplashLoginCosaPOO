@@ -10,6 +10,8 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
+import modelo.ModeloUsuario;
+
 public class ControladorVistaSplash implements MouseListener, MouseMotionListener, MouseWheelListener {
     // se declara un objeto que apuntara al original que viene en el constructor
     VistaSplash VistaSplash;
@@ -34,8 +36,9 @@ public class ControladorVistaSplash implements MouseListener, MouseMotionListene
             VistaSplash.dispose(); //Quita la ventala o mata la ventana Splash
             
             //darpaso al login creando la vista y el controlador
-            VistaLogin vistaLogin = new VistaLogin();
-            ControladorVistaLogin controladorVistaLogin = new ControladorVistaLogin(vistaLogin);
+            ModeloUsuario ModeloUsuario = new ModeloUsuario();
+            VistaLogin VistaLogin = new VistaLogin();
+            ControladorVistaLogin ControladorVistaLogin = new ControladorVistaLogin(VistaLogin, ModeloUsuario);
         }
     }
 
