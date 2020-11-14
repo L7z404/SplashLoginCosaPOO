@@ -11,7 +11,7 @@ public class Conexion {
     private final String Password = "";
     
     //Datos necesarios
-    private final String Puerto = "3306"; //Para mi es el 3308 no 3306
+    private final String Puerto = "3306"; 
     private final String Url = "jdbc:mysql://"+Servidor+":"+Puerto+"/"+Database+"?characterEncoding=utf8";
     
     //Conexión
