@@ -108,15 +108,22 @@ public class ControladorVistaLogin implements MouseListener{
                 
                 final JDialog dialog = new JDialog();
                 dialog.setAlwaysOnTop(true);    
-                JOptionPane.showMessageDialog(dialog, "Here I am");
+                JOptionPane.showMessageDialog(dialog, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1);
                 
                 // JOptionPane.showMessageDialog(null, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1); 
                 //1 = tipo de icono
             }else{ //usuario no existe o contraseña incorrecta
-                JOptionPane.showConfirmDialog(null, "Usuario o Password Incorrectos");
+                final JDialog dialog1 = new JDialog();
+                dialog1.setAlwaysOnTop(true);    
+                JOptionPane.showConfirmDialog(dialog1, "Usuario o Password Incorrectos");
+                // JOptionPane.showConfirmDialog(null, "Usuario o Password Incorrectos");
             }
         }else{ //Algun campo esta vacio o ambos (usuario/password)
-            JOptionPane.showConfirmDialog(null, "Debes de colocar texto en los campos"+"usuario y password");
+            final JDialog dialog2 = new JDialog();
+            dialog2.setAlwaysOnTop(true);    
+            JOptionPane.showConfirmDialog(dialog2, "Debes de colocar texto en los campos","usuario y password", JOptionPane.DEFAULT_OPTION);
+            
+            // JOptionPane.showConfirmDialog(null, "Debes de colocar texto en los campos"+"usuario y password");
         }
     }
 }
