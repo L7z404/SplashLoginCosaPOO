@@ -4,8 +4,11 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -14,7 +17,12 @@ public class VistaPantallaPrincipal extends JFrame{
     //Barra de menu
     JMenuBar BarraDeMenu = new JMenuBar();
     
+    //PanelBG
+    JPanel fondo = new JPanel();
+    
     //Icons
+    ImageIcon ImHerramientaBG = new ImageIcon(getClass().getResource("/imagenes/herra.jpg"));
+    JLabel LblHerramientaBG = new JLabel(ImHerramientaBG);
     ImageIcon ImUserMenu = new ImageIcon(getClass().getResource("/imagenes/userMenu.png"));
     ImageIcon ImExitMenu = new ImageIcon(getClass().getResource("/imagenes/exitMenu.png"));
     ImageIcon ImShrinkMenu = new ImageIcon(getClass().getResource("/imagenes/shrinkMenu.png"));
@@ -43,6 +51,8 @@ public class VistaPantallaPrincipal extends JFrame{
         this.setEnabled(true);
         this.setLayout(null);
         this.setUndecorated(true);
+        fondo.add(LblHerramientaBG);
+        this.setContentPane(fondo);
     }
     
     GridBagConstraints c = new GridBagConstraints();
