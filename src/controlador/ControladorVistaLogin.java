@@ -1,6 +1,8 @@
 package controlador;
 
 import vista.VistaLogin;
+import vista.VistaPantallaPrincipal;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -111,7 +113,16 @@ public class ControladorVistaLogin implements MouseListener{
                 JOptionPane.showMessageDialog(dialog, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1);
                 
                 // JOptionPane.showMessageDialog(null, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1); 
-                //1 = tipo de icono
+                //1 = tipo de icono.
+                
+                //Liberar la ventana del login
+                VistaLogin.dispose();
+                
+                //Crear el Modelo Vista de la pantalla principal
+                VistaPantallaPrincipal VistaPantallaPrincipal = new VistaPantallaPrincipal();
+                ControladorVistaPantallaPrincipal ControladorVistaPantallaPrincipal = new ControladorVistaPantallaPrincipal(VistaPantallaPrincipal);
+                
+                
             }else{ //usuario no existe o contraseña incorrecta
                 final JDialog dialog1 = new JDialog();
                 dialog1.setAlwaysOnTop(true);    
