@@ -7,12 +7,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
 public class VistaProductos extends JDialog {
- 
+    VistaPantallaPrincipal VistapantallaPrincipal;
      
      //Icons
      ImageIcon ImSearch = new ImageIcon(getClass().getResource("/imagenes/search.png"));
@@ -41,21 +42,20 @@ public class VistaProductos extends JDialog {
      
      
      
-     public VistaProductos(){
+     public VistaProductos(JFrame jFrame, boolean b){
          configuracion();
          menu();
      }
  
-     private void configuracion() {
+
+	private void configuracion() {
          this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
          this.setSize(600, 450); 
          this.setLocationRelativeTo(null); 
          this.getContentPane().setBackground(new Color(32, 132, 185));
          this.setTitle("ABC de productos");
          this.setResizable(false);
-         this.setEnabled(true);
          this.setLayout(null);
-
      }
      
      

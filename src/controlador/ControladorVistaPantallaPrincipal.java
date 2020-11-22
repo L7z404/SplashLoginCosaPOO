@@ -31,22 +31,18 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource() == VistaPantallaPrincipal.exit){
-            
             int opc = JOptionPane.showConfirmDialog(null, "Deseas Salir?", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (opc==0) {
                 System.exit(0);
-            } else if(e.getSource()==VistaPantallaPrincipal.cart){
-                ModeloProducto ModeloProducto = new ModeloProducto();
-                VistaProductos VistaProductos = new VistaProductos();
-                ControladorVistaProducto ControladorVistaProducto = new ControladorVistaProducto(VistaProductos);
-            } else if(e.getSource()==VistaPantallaPrincipal.shrink){
-                VistaPantallaPrincipal.setExtendedState(java.awt.Frame.ICONIFIED);
             }
-            
+        }else if(e.getSource()==VistaPantallaPrincipal.cart){
+            VistaProductos v = new VistaProductos(new JFrame(), true);
+            ModeloProducto m = new ModeloProducto();
+            ControladorVistaProducto p = new ControladorVistaProducto(m,v);
+        }else if(e.getSource()==VistaPantallaPrincipal.shrink){
+                VistaPantallaPrincipal.setExtendedState(java.awt.Frame.ICONIFIED);
         }
-
-
-    }
+}
 
     @Override
     public void mousePressed(MouseEvent e) {

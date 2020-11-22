@@ -16,10 +16,12 @@ public class ControladorVistaProducto implements MouseListener{
     
     private ConsultasProducto ConsultasProducto = new ConsultasProducto();
     
-    public ControladorVistaProducto(VistaProductos VistaProductos){
+    public ControladorVistaProducto(ModeloProducto ModeloProducto, VistaProductos VistaProductos){
         this.VistaProductos = VistaProductos;
+        this.ModeloProducto = ModeloProducto;
         oyentes();
         VistaProductos.setVisible(true);
+        llenarComboPresentacion();
     }
     
     private void oyentes() {
@@ -128,7 +130,7 @@ public class ControladorVistaProducto implements MouseListener{
     }
     
     private void llenarComboPresentacion() {
-        ConsultasProducto.llenarComboPresentacion(VistaProductos.ComboPresentacion);
+        // ConsultasProducto.llenarComboPresentacion(VistaProductos.ComboPresentacion);
     }
     
     private void guardar() {
@@ -215,9 +217,10 @@ public class ControladorVistaProducto implements MouseListener{
         }
     }
     
-    // public static void main(String[] args){
-    //     VistaProductos v = new VistaProductos();
-    //     ControladorVistaProducto p = new ControladorVistaProducto(v);
-    // }
+    public static void main(String[] args){
+        VistaProductos v = new VistaProductos(null, false);
+        ModeloProducto m = new ModeloProducto();
+        ControladorVistaProducto p = new ControladorVistaProducto(m,v);
+    }
     
 }
