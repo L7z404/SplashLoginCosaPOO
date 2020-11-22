@@ -103,11 +103,11 @@ public class VistaProductos extends JDialog {
         this.add(LblPresentacion);
         
         ComboPresentacion.setBounds(220, 270, 200, 30);
-        ComboPresentacion.addItem("---Elige Uno---");
-        ComboPresentacion.addItem("bolsa");
-        ComboPresentacion.addItem("caja");
-        ComboPresentacion.addItem("botella");
-        ComboPresentacion.addItem("carton");
+        // ComboPresentacion.addItem("---Elige Uno---");
+        // ComboPresentacion.addItem("bolsa");
+        // ComboPresentacion.addItem("caja");
+        // ComboPresentacion.addItem("botella");
+        // ComboPresentacion.addItem("carton");
         this.add(ComboPresentacion);
         
         BtnGuardar.setBounds(20, 340, 100, 30);

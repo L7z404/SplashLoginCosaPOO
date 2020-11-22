@@ -130,7 +130,7 @@ public class ControladorVistaProducto implements MouseListener{
     }
     
     private void llenarComboPresentacion() {
-        // ConsultasProducto.llenarComboPresentacion(VistaProductos.ComboPresentacion);
+        ConsultasProducto.llenarComboPresentacion(VistaProductos.ComboPresentacion);
     }
     
     private void guardar() {
