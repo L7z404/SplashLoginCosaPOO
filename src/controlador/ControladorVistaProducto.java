@@ -4,10 +4,13 @@ import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import modelo.ConsultasProducto;
 import modelo.ModeloProducto;
+import modelo.ModeloTablaProductos;
+import vista.VistaBusquedaPorDescripcion;
 import vista.VistaProductos;
 
 public class ControladorVistaProducto implements MouseListener{
@@ -47,7 +50,7 @@ public class ControladorVistaProducto implements MouseListener{
         } else if (e.getSource() == VistaProductos.BtnSalir){
             salir();
         } else if (e.getSource()==VistaProductos.LblSearch){
-            //Pendiente
+            busquedaMVC(); //MVC para buscar en una tabla todos los productos
         }
 
     }
@@ -222,5 +225,17 @@ public class ControladorVistaProducto implements MouseListener{
         ModeloProducto m = new ModeloProducto();
         ControladorVistaProducto p = new ControladorVistaProducto(m,v);
     }
+    
+    private void busquedaMVC() {
+        //Crear el MCV para la ventana modal de bisqueda + el modelo tabla
+       ModeloTablaProductos ModeloTablaProductos = new ModeloTablaProductos();
+       VistaBusquedaPorDescripcion VistaBusquedaPorDescripcion = new VistaBusquedaPorDescripcion(new JFrame(), true); //original
+       
+       //controlado
+       ControladorVistaBusquedaPorDescripcion ControladorSearch = new ControladorVistaBusquedaPorDescripcion(ModeloTablaProductos,ModeloProducto,
+               VistaBusquedaPorDescripcion);
+       
+       llenarVistaConModelo();//el modelo ya trae los datos del registro seleccionado
+   }
     
 }

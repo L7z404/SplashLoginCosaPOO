@@ -86,6 +86,29 @@ public class ConsultasProducto extends Conexion{
    }
    }
    
+   public void buscarFrase (JTextField TxtConsultar, DefaultTableModel ModeloTabla){
+    try {
+        PreparedStatement Ps;
+        String SQL = "select * from productos where descripcion like '%"+
+                TxtConsultar.getText()+"%'";
+        Ps = Con.prepareCall(SQL);
+        ResultSet Rs = Ps.executeQuery();
+        int numeroDeCampos = Ps.getMetaData().getColumnCount();
+        ModeloTabla.setRowCount(0);
+        while(Rs.next()){
+            String Fila[] = new String[numeroDeCampos];
+            Fila[0] = Rs.getInt("codigo")+"";
+            Fila[1] = Rs.getString("descripcion");
+            Fila[2] = Rs.getString("precio")+"";
+            Fila[3] = obtenerPresentacionString(Rs.getInt("presentacion"));
+            
+            ModeloTabla.addRow(Fila);
+        }
+    }catch (SQLException e){
+        JOptionPane.showMessageDialog(null,"Error: buscarFrase()\n"+ e);
+    }
+}
+   
 public String obtenerPresentacionString(int id_presentacion) {
     try {
         PreparedStatement Ps;
@@ -113,7 +136,7 @@ public String obtenerPresentacionString(int id_presentacion) {
         Ps.setString(1,Presentacion);
         ResultSet Rs = Ps.executeQuery();
         if (Rs.next()) {
-            return Rs.getInt("Presentacion");
+            return Rs.getInt("presentacion");
             
             }
         return null;
@@ -122,6 +145,30 @@ public String obtenerPresentacionString(int id_presentacion) {
         return null;
     }
  }
+ 
+ public boolean buscarTodosLosProductos(DefaultTableModel Modelo) {
+    try {
+        PreparedStatement Ps;
+        String SQL = "select * from productos order by descripcion";
+        Ps = Con.prepareCall(SQL);
+        ResultSet Rs = Ps.executeQuery();
+        int numeroDeCampos = Rs.getMetaData().getColumnCount();
+        while (Rs.next()) {
+            Object Fila[] = new Object[numeroDeCampos];
+            Fila[0] = Rs.getInt("codigo");
+            Fila[1] = Rs.getString("descripcion");
+            Fila[2] = Rs.getFloat("precio");
+            //Como la características es númerica, la convierte a String con una consulta
+            Fila[3] = obtenerPresentacionString(Rs.getInt("presentacion"));
+            Modelo.addRow(Fila);
+            }
+        return true;
+    } catch (SQLException e){
+        JOptionPane.showMessageDialog(null,"Error: buscarTodosLosProductos()\n"+ e);
+         return false;
+         
+    }
+   } 
 
    
     public void llenarComboPresentacion(JComboBox ComboTabla){
