@@ -9,13 +9,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import modelo.ModeloUsuario;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 public class VistaPantallaPrincipal extends JFrame{
+    ModeloUsuario mu;
     //Barra de menu
-    JMenuBar BarraDeMenu = new JMenuBar();
+    public JMenuBar BarraDeMenu = new JMenuBar();
     
     //PanelBG
     JPanel fondo = new JPanel();
@@ -27,11 +30,11 @@ public class VistaPantallaPrincipal extends JFrame{
     ImageIcon ImExitMenu = new ImageIcon(getClass().getResource("/imagenes/exitMenu.png"));
     ImageIcon ImShrinkMenu = new ImageIcon(getClass().getResource("/imagenes/shrinkMenu.png"));
     ImageIcon ImCartMenu = new ImageIcon(getClass().getResource("/imagenes/cartMenu.png"));
-    ImageIcon ImNada = new ImageIcon(getClass().getResource("/imagenes/transparentCosa.png"));
+    ImageIcon ImEmpleadoMenu = new ImageIcon(getClass().getResource("/imagenes/empleadoMenu.png"));
     
     
     //Items
-    JMenuItem blank = new JMenuItem(ImNada);
+    public JMenuItem empleado = new JMenuItem(ImEmpleadoMenu);
     public JMenuItem user = new JMenuItem(ImUserMenu);
     public JMenuItem cart = new JMenuItem(ImCartMenu);
     public JMenuItem shrink = new JMenuItem(ImShrinkMenu);
@@ -60,11 +63,23 @@ public class VistaPantallaPrincipal extends JFrame{
     private void menu() {
         BarraDeMenu.setLayout(new GridBagLayout()); 
         
-        c.insets = new Insets(0,30,0,100);
+        c.insets = new Insets(0,0,0,75);
+        
+        
+        
+
+        // agregarUser();
         BarraDeMenu.add(user, c);
-        BarraDeMenu.add(cart, c);
+        BarraDeMenu.add(empleado, c);
+        // BarraDeMenu.add(cart, c);
         BarraDeMenu.add(shrink, c);
         BarraDeMenu.add(exit, c);
         this.setJMenuBar(BarraDeMenu);
-    }
+    }  
+
+    
+    // public static void main(String[] args){
+    //     VistaPantallaPrincipal v = new VistaPantallaPrincipal();
+    //     v.setVisible(true);
+    // }
 }

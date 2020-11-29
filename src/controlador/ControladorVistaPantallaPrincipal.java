@@ -1,6 +1,7 @@
 package controlador;
 
 import vista.VistaEmpleado;
+import vista.VistaLogin;
 import vista.VistaPantallaPrincipal;
 import vista.VistaProductos;
 
@@ -8,14 +9,18 @@ import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import modelo.ConsultasUsuario;
 import modelo.ModeloEmpleado;
 import modelo.ModeloProducto;
+import modelo.ModeloUsuario;
 
 public class ControladorVistaPantallaPrincipal implements MouseListener{
     VistaPantallaPrincipal VistaPantallaPrincipal;
+
     
     public ControladorVistaPantallaPrincipal(VistaPantallaPrincipal VistaPantallaPrincipal){
         this.VistaPantallaPrincipal = VistaPantallaPrincipal;
@@ -28,6 +33,7 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
         VistaPantallaPrincipal.cart.addMouseListener(this);
         VistaPantallaPrincipal.shrink.addMouseListener(this);
         VistaPantallaPrincipal.exit.addMouseListener(this);
+        VistaPantallaPrincipal.empleado.addMouseListener(this);
     }
 
     @Override
@@ -43,12 +49,13 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
             ControladorVistaProducto p = new ControladorVistaProducto(m,v);
         }else if(e.getSource()==VistaPantallaPrincipal.shrink){
                 VistaPantallaPrincipal.setExtendedState(java.awt.Frame.ICONIFIED);
-        }else if(e.getSource() == VistaPantallaPrincipal.user){
+        }else if(e.getSource() == VistaPantallaPrincipal.empleado){
             VistaEmpleado v = new VistaEmpleado(new JFrame(), true);
             ModeloEmpleado m = new ModeloEmpleado();
             ControladorVistaEmpleado p = new ControladorVistaEmpleado(m, v);
         }
-}
+        
+} 
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -76,6 +83,10 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
         if(e.getSource() == VistaPantallaPrincipal.exit){
             VistaPantallaPrincipal.exit.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
+        if(e.getSource() == VistaPantallaPrincipal.empleado){
+            VistaPantallaPrincipal.empleado.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+        
 
     }
 

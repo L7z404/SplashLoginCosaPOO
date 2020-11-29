@@ -133,6 +133,8 @@ public class ControladorVistaLogin implements MouseListener{
                 // JOptionPane.showMessageDialog(null, "Bienvenido: "+ModeloUsuario.getNombre(), "Tipo: "+ModeloUsuario.getTipo(), 1); 
                 //1 = tipo de icono.
                 
+                
+                
                 //Liberar la ventana del login
                 VistaLogin.dispose();
                 
@@ -140,6 +142,9 @@ public class ControladorVistaLogin implements MouseListener{
                 VistaPantallaPrincipal VistaPantallaPrincipal = new VistaPantallaPrincipal();
                 ControladorVistaPantallaPrincipal ControladorVistaPantallaPrincipal = new ControladorVistaPantallaPrincipal(VistaPantallaPrincipal);
                 
+                if (!(ModeloUsuario.getTipo().equals("SuperAdministrador"))) {
+                    VistaPantallaPrincipal.BarraDeMenu.remove(VistaPantallaPrincipal.user);
+                }
                 
             }else{ //usuario no existe o contraseña incorrecta
                 final JDialog dialog1 = new JDialog();
