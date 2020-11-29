@@ -5,6 +5,11 @@ import vista.VistaPantallaPrincipal;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.System.Logger;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -40,7 +45,12 @@ public class ControladorVistaLogin implements MouseListener{
         if(e.getSource()==VistaLogin.BtnCerrar){
             VistaLogin.dispose();
         }else if(e.getSource()==VistaLogin.BtnLogin){
-            buscarUsuarioPassword();
+            try {
+                buscarUsuarioPassword();
+            } catch (NoSuchAlgorithmException e1) {
+                // TODO Auto-generated catch block
+                System.getLogger(ControladorVistaLogin.class.getName()).log(null, e1);
+            }
         }
     }
 
@@ -93,15 +103,23 @@ public class ControladorVistaLogin implements MouseListener{
         }
     }
     
-    private void llenarModeloConCampos(){
+    private void llenarModeloConCampos() throws NoSuchAlgorithmException{
         ModeloUsuario.setUsuario(VistaLogin.TxtUsuario.getText());
-        ModeloUsuario.setPassword(new String(VistaLogin.TxtPassword.getPassword()));
+        
+        //Encripta la pass
+        String PasswordSinEncriptar = new String(VistaLogin.TxtPassword.getPassword());
+        String PassEncriptado = encriptarPassword(PasswordSinEncriptar);
+        System.out.println(encriptarPassword(PasswordSinEncriptar));
+        
+        
+        
+        ModeloUsuario.setPassword(PassEncriptado);
         ModeloUsuario.setNombre(""); //No se conoce
         ModeloUsuario.setTipo(""); //No se conoce
     }
     
     //Metodo que ahce una busqueda del usuario y password en la base de datos
-    private void buscarUsuarioPassword(){
+    private void buscarUsuarioPassword() throws NoSuchAlgorithmException{
         if(camposValidos()==true){ //Hay texto en los campos
             llenarModeloConCampos(); //Para que lleve la informaicon ue necesita la consulta sql
             if(ConsultasUsuario.buscarLogin(ModeloUsuario)==true){ //Si encontro al usuairo
@@ -136,5 +154,11 @@ public class ControladorVistaLogin implements MouseListener{
             
             // JOptionPane.showConfirmDialog(null, "Debes de colocar texto en los campos"+"usuario y password");
         }
+    }
+    
+    private String encriptarPassword(String Password) throws NoSuchAlgorithmException{
+        MessageDigest Md = MessageDigest.getInstance("MD5");
+        Md.update(Password.getBytes(), 0, Password.length());
+        return new BigInteger(1,Md.digest()).toString(16);
     }
 }
