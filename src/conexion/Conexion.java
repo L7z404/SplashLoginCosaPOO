@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Conexion {
     //Datos necesarios que cambian de acuerdo a las necesidades de la app
     private final String Servidor = "localhost"; //si es local = "localhost"
-    private final String Database = "tiendita";
+    private final String Database = "ferreteria";
     private final String Usuario = "root"; //si el servidor es con localhost = root
     private final String Password = "";
     

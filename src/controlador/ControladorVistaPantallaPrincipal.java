@@ -1,5 +1,6 @@
 package controlador;
 
+import vista.VistaEmpleado;
 import vista.VistaPantallaPrincipal;
 import vista.VistaProductos;
 
@@ -10,6 +11,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import modelo.ModeloEmpleado;
 import modelo.ModeloProducto;
 
 public class ControladorVistaPantallaPrincipal implements MouseListener{
@@ -41,6 +43,10 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
             ControladorVistaProducto p = new ControladorVistaProducto(m,v);
         }else if(e.getSource()==VistaPantallaPrincipal.shrink){
                 VistaPantallaPrincipal.setExtendedState(java.awt.Frame.ICONIFIED);
+        }else if(e.getSource() == VistaPantallaPrincipal.user){
+            VistaEmpleado v = new VistaEmpleado(new JFrame(), true);
+            ModeloEmpleado m = new ModeloEmpleado();
+            ControladorVistaEmpleado p = new ControladorVistaEmpleado(m, v);
         }
 }
 
