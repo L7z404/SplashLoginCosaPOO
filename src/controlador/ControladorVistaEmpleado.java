@@ -13,12 +13,16 @@ import modelo.ModeloEmpleado;
 import modelo.ModeloProducto;
 import modelo.ModeloTablaEmpleados;
 import modelo.ModeloTablaProductos;
+// import sun.jvm.hotspot.opto.RootNode;
 import vista.VistaBusquedaEmpleadoPorDescripcion;
 import vista.VistaBusquedaPorDescripcion;
 import vista.VistaEmpleado;
 import vista.VistaProductos;
 
-public class ControladorVistaEmpleado implements MouseListener {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class ControladorVistaEmpleado implements MouseListener, KeyListener {
     private VistaEmpleado VistaEmpleado;
     private ModeloEmpleado ModeloEmpleado;
 
@@ -33,12 +37,29 @@ public class ControladorVistaEmpleado implements MouseListener {
     }
 
     private void oyentes() {
+        //Oyentes Mouse
         VistaEmpleado.BtnSalir.addMouseListener(this);
         VistaEmpleado.BtnGuardar.addMouseListener(this);
         VistaEmpleado.BtnEliminar.addMouseListener(this);
         VistaEmpleado.BtnActualizar.addMouseListener(this);
         VistaEmpleado.BtnBuscar.addMouseListener(this);
         VistaEmpleado.LblSearch.addMouseListener(this);
+
+        //Oyentes teclado
+        VistaEmpleado.TxtIDEmpleado.addKeyListener(this);
+        VistaEmpleado.TxtNombre.addKeyListener(this);
+        VistaEmpleado.TxtCalle.addKeyListener(this);
+        VistaEmpleado.TxtColonia.addKeyListener(this);
+        VistaEmpleado.TxtMunicipio.addKeyListener(this);
+        VistaEmpleado.TxtCiudad.addKeyListener(this);
+        VistaEmpleado.TxtCP.addKeyListener(this);
+        VistaEmpleado.TxtTelefono.addKeyListener(this);
+        VistaEmpleado.TxtCargo.addKeyListener(this);
+        VistaEmpleado.TxtFechaIngreso.addKeyListener(this);
+        VistaEmpleado.TxtSueldo.addKeyListener(this);
+        VistaEmpleado.TxtHoraEntrada.addKeyListener(this);
+        VistaEmpleado.TxtHoraSalida.addKeyListener(this);
+        VistaEmpleado.TxtCorreo.addKeyListener(this);
 
     }
 
@@ -287,6 +308,47 @@ public class ControladorVistaEmpleado implements MouseListener {
        vistaBusquedaEmpleadoPorDescripcion);
        
        llenarVistaConModelo();//el modelo ya trae los datos del registro seleccionado
+   }
+
+   @Override
+   public void keyTyped(KeyEvent e) {
+    //    if (e.getSource() == VistaEmpleado.TxtIDEmpleado) {
+    //        if (e.getKeyChar() == e.VK_ENTER) {
+    //            VistaEmpleado.TxtNombre.requestFocus();
+    //        }
+    //    }
+
+   }
+
+   //Terminar Estas Validaciones y las de Usuarios
+   //Acomodar diseño si hay chanza
+   @Override
+   public void keyPressed(KeyEvent e) {
+       if (e.getSource() == VistaEmpleado.TxtIDEmpleado) {
+        if (e.getKeyChar() == e.VK_ENTER) {
+            if (validaCampoEntero(VistaEmpleado.TxtIDEmpleado.getText(), 11) == true) {
+                VistaEmpleado.TxtNombre.requestFocus();
+            }else{
+                VistaEmpleado.TxtIDEmpleado.setText("");
+            }
+        }
+       }
+
+   }
+
+   @Override
+   public void keyReleased(KeyEvent e) {
+       // TODO Auto-generated method stub
+
+   }
+   
+   private boolean validaCampoEntero(String Cadena, int longitud){
+       if (Cadena.matches("[0-9, .]+") && Cadena.length()<longitud+1) {
+           return true;
+       }else{
+           JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de Teclear solo numeros y no debe de estar vacio el campo y la longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+           return false;
+       }
    }
     
 }
