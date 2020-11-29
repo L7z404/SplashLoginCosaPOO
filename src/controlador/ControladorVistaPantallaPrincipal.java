@@ -4,6 +4,7 @@ import vista.VistaEmpleado;
 import vista.VistaLogin;
 import vista.VistaPantallaPrincipal;
 import vista.VistaProductos;
+import vista.VistaUsuario;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
@@ -53,6 +54,10 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
             VistaEmpleado v = new VistaEmpleado(new JFrame(), true);
             ModeloEmpleado m = new ModeloEmpleado();
             ControladorVistaEmpleado p = new ControladorVistaEmpleado(m, v);
+        }else if(e.getSource() == VistaPantallaPrincipal.user){
+            VistaUsuario v = new VistaUsuario(new JFrame(), true);
+            ModeloUsuario m = new ModeloUsuario();
+            ControladorVistaUsuario p = new ControladorVistaUsuario(m, v);
         }
         
 } 
