@@ -37,7 +37,7 @@ public class VistaEmpleado extends JDialog {
     JLabel LblCorreo = new JLabel("Correo");
     JLabel LblPuesto = new JLabel("Puesto");
 
-    public JTextField TxtIDEmpleado = new JTextField();
+    public JTextField TxtIDEmpleado = new JTextField("1");
     public JTextField TxtNombre = new JTextField();
     public JTextField TxtCalle = new JTextField();
     public JTextField TxtColonia = new JTextField();

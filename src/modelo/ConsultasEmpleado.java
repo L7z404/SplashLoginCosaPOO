@@ -15,11 +15,11 @@ public class ConsultasEmpleado extends Conexion {
    Connection Con = getConexion();
     
    
-   public boolean insertar(ModeloEmpleado Modelo){
+   public boolean insertar(ModeloEmpleado Modelo){  
    try {
        PreparedStatement Ps;
        String SQL =
-       "insert into empleado (IDEmpleado, Nombre, Calle, Colonia, Municipio, Ciudad, CP, Telefono, Cargo, FechaIngreso, Sueldo, HoraEntrada, HoraSalida, Correo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+       "insert into empleado (IDEmpleado, Nombre, Calle, Colonia, Municipio, Ciudad, CP, Telefono, Cargo, FechaIngreso, Sueldo, HoraEntrada, HoraSalida, Correo, puesto) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
        Ps = Con.prepareCall(SQL);//Preparara llamada a la consulta
        
     //    Ps.setInt(1,Modelo.getCodigo()); //interrogante 1
@@ -41,6 +41,7 @@ public class ConsultasEmpleado extends Conexion {
        Ps.setString(12, Modelo.getHoraEntrada());
        Ps.setString(13, Modelo.getHoraSalida());
        Ps.setString(14, Modelo.getCorreo());
+       Ps.setInt(15, Modelo.getPuesto());
        
        Ps.executeUpdate(); //Ejecutar la consulta SQL
        return true;
@@ -54,7 +55,7 @@ public class ConsultasEmpleado extends Conexion {
    try {
        PreparedStatement Ps;
        String SQL =
-       "update empleado set Nombre=?, Calle=?, Colonia=?, Municipio=?, Ciudad=?, CP=?, Telefono=?, Cargo=?, FechaIngreso=?, Sueldo=?, HoraEntrada=?, HoraSalida=?, Correo=? where IDEmpleado=?";
+       "update empleado set Nombre=?, Calle=?, Colonia=?, Municipio=?, Ciudad=?, CP=?, Telefono=?, Cargo=?, FechaIngreso=?, Sueldo=?, HoraEntrada=?, HoraSalida=?, Correo=?, puesto=? where IDEmpleado=?";
        Ps = Con.prepareCall(SQL);//Preparara llamada a la consulta
        
     //    Ps.setString(1,Modelo.getDescripcion()); //interrogante 1
@@ -77,7 +78,8 @@ public class ConsultasEmpleado extends Conexion {
             Ps.setString(11, Modelo.getHoraEntrada());
             Ps.setString(12, Modelo.getHoraSalida());
             Ps.setString(13, Modelo.getCorreo());
-            Ps.setInt(14, Modelo.getIDEmpleado());
+            Ps.setInt(14, Modelo.getPuesto());
+            Ps.setInt(15, Modelo.getIDEmpleado());
        
        Ps.executeUpdate(); //Ejecutar la consulta SQL
        return true;
@@ -113,6 +115,7 @@ public class ConsultasEmpleado extends Conexion {
        
     //    Ps.setInt(1,Modelo.getCodigo()); //interrogante 1
        
+        Ps.setInt(1, Modelo.getIDEmpleado());
        
        ResultSet Rs = Ps.executeQuery();//Para obtener resultados
        

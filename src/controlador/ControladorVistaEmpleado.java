@@ -190,20 +190,20 @@ public class ControladorVistaEmpleado implements MouseListener {
         if (validarTodosLosCampos()) {
             ModeloEmpleado.setIDEmpleado(Integer.parseInt(VistaEmpleado.TxtIDEmpleado.getText()));
             if (ConsultasEmpleado.buscar(ModeloEmpleado) == true) {
-                JOptionPane.showMessageDialog(VistaEmpleado, "Ese producto ya existe");
+                JOptionPane.showMessageDialog(VistaEmpleado, "Ese empleado ya existe");
             } else {
                 llenarModeloConVista();
                 if (ConsultasEmpleado.insertar(ModeloEmpleado) == true) {
                     JOptionPane.showMessageDialog(null, "Registro guardado correctamente");
                     limpiarCampos();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El campo codigo no debe estar vacio");
+                    JOptionPane.showMessageDialog(null, "El campo ID no debe estar vacio");
 
                 }
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "El campo codigo no debe estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo ID no debe estar vacio");
 
         }
     }
@@ -216,7 +216,7 @@ public class ControladorVistaEmpleado implements MouseListener {
             ModeloTemporal.setIDEmpleado(Integer.parseInt(VistaEmpleado.TxtIDEmpleado.getText()));
 
             if (ConsultasEmpleado.buscar(ModeloTemporal) == false) {
-                JOptionPane.showMessageDialog(VistaEmpleado, "Ese producto no existe");
+                JOptionPane.showMessageDialog(VistaEmpleado, "Ese empleado no existe");
             } else {
                 if (ConsultasEmpleado.modificar(ModeloEmpleado)) {
                     JOptionPane.showMessageDialog(VistaEmpleado, "Registro modificado correctamente");
@@ -235,7 +235,7 @@ public class ControladorVistaEmpleado implements MouseListener {
         if (validarCampoCodigo()) {
             ModeloEmpleado.setIDEmpleado(Integer.parseInt(VistaEmpleado.TxtIDEmpleado.getText()));
             if (ConsultasEmpleado.buscar(ModeloEmpleado) == false) {
-                JOptionPane.showMessageDialog(VistaEmpleado, "Ese producto no existe");
+                JOptionPane.showMessageDialog(VistaEmpleado, "Ese empleado no existe");
             } else {
                 if (ConsultasEmpleado.eliminar(ModeloEmpleado)) {
                     JOptionPane.showMessageDialog(VistaEmpleado, "Registro eliminado correctamente");
@@ -245,7 +245,7 @@ public class ControladorVistaEmpleado implements MouseListener {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "El campo codigo no debe de estar vacio");
+            JOptionPane.showMessageDialog(null, "El campo ID no debe de estar vacio");
         }
     }
 
