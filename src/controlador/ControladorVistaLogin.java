@@ -110,7 +110,7 @@ public class ControladorVistaLogin implements MouseListener{
         //Encripta la pass
         String PasswordSinEncriptar = new String(VistaLogin.TxtPassword.getPassword());
         String PassEncriptado = encriptarPassword(PasswordSinEncriptar);
-        System.out.println(encriptarPassword(PasswordSinEncriptar));
+        // System.out.println(encriptarPassword(PasswordSinEncriptar));
         
         
         

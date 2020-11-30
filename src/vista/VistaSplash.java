@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 public class VistaSplash extends JFrame {
     
     //Convertir imagen splash.gif en objeto
-    ImageIcon ImSplash = new ImageIcon(getClass().getResource("/imagenes/splash.gif"));
+    ImageIcon ImSplash = new ImageIcon(getClass().getResource("/imagenes/splashherra.gif"));
     //Esta etiqueta es la que se agregara al JFrame, con la imagen splash incrustada
     public JLabel LblSplash = new JLabel(ImSplash);
     
