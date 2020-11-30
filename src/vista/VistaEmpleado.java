@@ -70,7 +70,7 @@ public class VistaEmpleado extends JDialog {
          this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
          this.setSize(800, 600); 
          this.setLocationRelativeTo(null); 
-         this.getContentPane().setBackground(new Color(32, 132, 185));
+         this.getContentPane().setBackground(new Color(228, 104, 12));
          this.setTitle("ABC de Empleados");
          this.setResizable(false);
          this.setLayout(null);
@@ -80,135 +80,138 @@ public class VistaEmpleado extends JDialog {
      private void menu() {
         titulo.setForeground(Color.WHITE);
         titulo.setFont(new Font("serif", Font.BOLD, 20));
-        titulo.setBounds(225, 10, 200, 30);
+        titulo.setBounds(310, 10, 200, 30);
         this.add(titulo);
         
         
-        LblSearch.setBounds(135, 75, 25, 25);
+        LblSearch.setBounds(30, 75, 25, 25);
         this.add(LblSearch);
         
-        LblIDEmpleado.setBounds(165, 75, 50, 20);
+        LblIDEmpleado.setBounds(60, 75, 200, 20);
         LblIDEmpleado.setForeground(Color.WHITE);
         this.add(LblIDEmpleado);
         
-        TxtIDEmpleado.setBounds(220, 70, 200, 30);
+        TxtIDEmpleado.setBounds(145, 70, 200, 30);
         this.add(TxtIDEmpleado);
         
-        LblNombre.setBounds(160, 125, 50, 20);
+        LblNombre.setBounds(70, 125, 200, 20);
         LblNombre.setForeground(Color.WHITE);
         this.add(LblNombre);
         
-        TxtNombre.setBounds(220, 120, 200, 30);
+        TxtNombre.setBounds(145, 120, 200, 30);
         this.add(TxtNombre);
         
-        LblCalle.setBounds(165, 175, 50, 20);
+        LblCalle.setBounds(70, 175, 200, 20);
         LblCalle.setForeground(Color.WHITE);
         this.add(LblCalle);
         
-        TxtCalle.setBounds(220, 170, 200, 30);
+        TxtCalle.setBounds(145, 170, 200, 30);
         this.add(TxtCalle);
         
         
-        LblMunicipio.setBounds(130, 225, 90, 20);
+        LblColonia.setBounds(70, 225, 200, 20);
+        LblColonia.setForeground(Color.WHITE);
+        this.add(LblColonia);
+        
+        TxtColonia.setBounds(145, 220, 200, 30);
+        this.add(TxtColonia);
+        
+        
+        LblMunicipio.setBounds(70, 275, 200, 20);
         LblMunicipio.setForeground(Color.WHITE);
         this.add(LblMunicipio);
         
-        TxtMunicipio.setBounds(220, 220, 200, 30);
+        TxtMunicipio.setBounds(145, 270, 200, 30);
         this.add(TxtMunicipio);
         
-        LblCiudad.setBounds(130, 275, 90, 20);
+        LblCiudad.setBounds(70, 325, 200, 20);
         LblCiudad.setForeground(Color.WHITE);
         this.add(LblCiudad);
         
-        TxtCiudad.setBounds(220, 270, 200, 30);
+        TxtCiudad.setBounds(145, 320, 200, 30);
         this.add(TxtCiudad);
         
-        LblCP.setBounds(130, 325, 90, 20);
+        LblCP.setBounds(70, 375, 200, 20);
         LblCP.setForeground(Color.WHITE);
         this.add(LblCP);
         
-        TxtCP.setBounds(220, 320, 200, 30);
+        TxtCP.setBounds(145, 370, 200, 30);
         this.add(TxtCP);
         
         
-        LblTelefono.setBounds(130, 375, 90, 20);
+        LblTelefono.setBounds(395, 75, 90, 20);
         LblTelefono.setForeground(Color.WHITE);
         this.add(LblTelefono);
         
-        TxtTelefono.setBounds(220, 370, 200, 30);
+        TxtTelefono.setBounds(485, 70, 200, 30);
         this.add(TxtTelefono);
         
-        LblCargo.setBounds(130, 425, 90, 20);
+        LblCargo.setBounds(395, 125, 90, 20);
         LblCargo.setForeground(Color.WHITE);
         this.add(LblCargo);
         
-        TxtCargo.setBounds(220, 420, 200, 30);
+        TxtCargo.setBounds(485, 120, 200, 30);
         this.add(TxtCargo);
         
         
-        LblFechaIngreso.setBounds(470, 75, 90, 20);
+        LblFechaIngreso.setBounds(395, 175, 90, 20);
         LblFechaIngreso.setForeground(Color.WHITE);
         this.add(LblFechaIngreso);
         
-        TxtFechaIngreso.setBounds(560, 70, 200, 30);
+        TxtFechaIngreso.setBounds(485, 170, 200, 30);
         this.add(TxtFechaIngreso);
         
-        LblSueldo.setBounds(470, 125, 90, 20);
+        LblSueldo.setBounds(395, 225, 90, 20);
         LblSueldo.setForeground(Color.WHITE);
         this.add(LblSueldo);
         
-        TxtSueldo.setBounds(560, 120, 200, 30);
+        TxtSueldo.setBounds(485, 220, 200, 30);
         this.add(TxtSueldo);
         
-        LblHoraEntrada.setBounds(470, 175, 90, 20);
+        LblHoraEntrada.setBounds(395, 275, 90, 20);
         LblHoraEntrada.setForeground(Color.WHITE);
         this.add(LblHoraEntrada);
         
-        TxtHoraEntrada.setBounds(560, 170, 200, 30);
+        TxtHoraEntrada.setBounds(485, 270, 200, 30);
         this.add(TxtHoraEntrada);
         
         
-        LblHoraSalida.setBounds(470, 225, 90, 20);
+        LblHoraSalida.setBounds(395, 325, 90, 20);
         LblHoraSalida.setForeground(Color.WHITE);
         this.add(LblHoraSalida);
         
-        TxtHoraSalida.setBounds(560, 220, 200, 30);
+        TxtHoraSalida.setBounds(485, 320, 200, 30);
         this.add(TxtHoraSalida);
         
         
-        LblCorreo.setBounds(470, 275, 90, 20);
+        LblCorreo.setBounds(395, 375, 90, 20);
         LblCorreo.setForeground(Color.WHITE);
         this.add(LblCorreo);
         
-        TxtCorreo.setBounds(560, 270, 200, 30);
+        TxtCorreo.setBounds(485, 370, 200, 30);
         this.add(TxtCorreo);
         
         
-        LblPuesto.setBounds(125, 470, 90, 20);
+        LblPuesto.setBounds(250, 450, 90, 20);
         LblPuesto.setForeground(Color.WHITE);
         this.add(LblPuesto);
         
-        ComboPuesto.setBounds(220, 470, 200, 30);
-        // ComboPresentacion.addItem("---Elige Uno---");
-        // ComboPresentacion.addItem("bolsa");
-        // ComboPresentacion.addItem("caja");
-        // ComboPresentacion.addItem("botella");
-        // ComboPresentacion.addItem("carton");
+        ComboPuesto.setBounds(300, 450, 200, 30);
         this.add(ComboPuesto);
         
-        BtnGuardar.setBounds(20, 520, 100, 30);
+        BtnGuardar.setBounds(40, 510, 100, 30);
         this.add(BtnGuardar);
         
-        BtnBuscar.setBounds(130, 520, 100, 30);
+        BtnBuscar.setBounds(190, 510, 100, 30);
         this.add(BtnBuscar);
         
-        BtnEliminar.setBounds(240, 520, 100, 30);
+        BtnEliminar.setBounds(340, 510, 100, 30);
         this.add(BtnEliminar);
         
-        BtnActualizar.setBounds(350, 520, 100, 30);
+        BtnActualizar.setBounds(490, 510, 100, 30);
         this.add(BtnActualizar);
         
-        BtnSalir.setBounds(460, 520, 100, 30);
+        BtnSalir.setBounds(640, 510, 100, 30);
         this.add(BtnSalir);
      }
      

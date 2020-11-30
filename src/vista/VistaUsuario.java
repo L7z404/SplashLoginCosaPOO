@@ -48,7 +48,7 @@ public class VistaUsuario extends JDialog {
          this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
          this.setSize(600, 450); 
          this.setLocationRelativeTo(null); 
-         this.getContentPane().setBackground(new Color(32, 132, 185));
+         this.getContentPane().setBackground(new Color(228, 104, 12));
          this.setTitle("ABC de Usuarios");
          this.setResizable(false);
          this.setLayout(null);

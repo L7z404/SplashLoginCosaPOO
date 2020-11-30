@@ -3,6 +3,8 @@ package controlador;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -317,6 +319,8 @@ public class ControladorVistaEmpleado implements MouseListener, KeyListener {
     //            VistaEmpleado.TxtNombre.requestFocus();
     //        }
     //    }
+    
+    
 
    }
 
@@ -324,15 +328,161 @@ public class ControladorVistaEmpleado implements MouseListener, KeyListener {
    //Acomodar diseño si hay chanza
    @Override
    public void keyPressed(KeyEvent e) {
+       //IDEmpleado
        if (e.getSource() == VistaEmpleado.TxtIDEmpleado) {
-        if (e.getKeyChar() == e.VK_ENTER) {
-            if (validaCampoEntero(VistaEmpleado.TxtIDEmpleado.getText(), 11) == true) {
-                VistaEmpleado.TxtNombre.requestFocus();
-            }else{
-                VistaEmpleado.TxtIDEmpleado.setText("");
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoEntero(VistaEmpleado.TxtIDEmpleado.getText(), 11) == true) {
+                    VistaEmpleado.TxtNombre.requestFocus();
+                }else{
+                    VistaEmpleado.TxtIDEmpleado.setText("");
+                }
+            }
+       }
+       
+       
+       
+       //Nombre
+       if (e.getSource() == VistaEmpleado.TxtNombre) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtNombre.getText(), 45) == true) {
+                    VistaEmpleado.TxtCalle.requestFocus();
+                }else{
+                    VistaEmpleado.TxtNombre.setText("");
+                }
             }
         }
+        
+        //Calle
+        if (e.getSource() == VistaEmpleado.TxtCalle) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtCalle.getText(), 45) == true) {
+                    VistaEmpleado.TxtColonia.requestFocus();
+                }else{
+                    VistaEmpleado.TxtCalle.setText("");
+                }
+            }
+        }
+        
+        //Colonia
+        if (e.getSource() == VistaEmpleado.TxtColonia) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtColonia.getText(), 45) == true) {
+                    VistaEmpleado.TxtMunicipio.requestFocus();
+                }else{
+                    VistaEmpleado.TxtColonia.setText("");
+                }
+            }
+        }
+        
+        //Municipio
+        if (e.getSource() == VistaEmpleado.TxtMunicipio) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtMunicipio.getText(), 45) == true) {
+                    VistaEmpleado.TxtCiudad.requestFocus();
+                }else{
+                    VistaEmpleado.TxtMunicipio.setText("");
+                }
+            }
+        }
+        
+        //Ciudad
+        if (e.getSource() == VistaEmpleado.TxtCiudad) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtCiudad.getText(), 45) == true) {
+                    VistaEmpleado.TxtCP.requestFocus();
+                }else{
+                    VistaEmpleado.TxtCiudad.setText("");
+                }
+            }
+        }
+        
+        //CP
+        if (e.getSource() == VistaEmpleado.TxtCP) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoEntero(VistaEmpleado.TxtCP.getText(), 11) == true) {
+                    VistaEmpleado.TxtTelefono.requestFocus();
+                }else{
+                    VistaEmpleado.TxtCP.setText("");
+                }
+            }
        }
+        
+        //Telefono
+       if (e.getSource() == VistaEmpleado.TxtTelefono) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTel(VistaEmpleado.TxtTelefono.getText(), 12) == true) {
+                    VistaEmpleado.TxtCargo.requestFocus();
+                }else{
+                    VistaEmpleado.TxtTelefono.setText("");
+                }
+            }
+        }
+        
+        //Cargo
+        if (e.getSource() == VistaEmpleado.TxtCargo) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(VistaEmpleado.TxtCargo.getText(), 45) == true) {
+                    VistaEmpleado.TxtFechaIngreso.requestFocus();
+                }else{
+                    VistaEmpleado.TxtCargo.setText("");
+                }
+            }
+        }
+       
+       //FechaIngreso
+       if (e.getSource() == VistaEmpleado.TxtFechaIngreso) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoDate(VistaEmpleado.TxtFechaIngreso.getText()) == true) {
+                    VistaEmpleado.TxtSueldo.requestFocus();
+                }else{
+                    VistaEmpleado.TxtFechaIngreso.setText("");
+                }
+            }
+        }
+        
+        //Sueldo
+        if (e.getSource() == VistaEmpleado.TxtSueldo) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoFloat(VistaEmpleado.TxtSueldo.getText()) == true) {
+                    VistaEmpleado.TxtHoraEntrada.requestFocus();
+                }else{
+                    VistaEmpleado.TxtSueldo.setText("");
+                }
+            }
+        }
+        
+        //HoraEntrada
+       if (e.getSource() == VistaEmpleado.TxtHoraEntrada) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTime(VistaEmpleado.TxtHoraEntrada.getText()) == true) {
+                    VistaEmpleado.TxtHoraSalida.requestFocus();
+                }else{
+                    VistaEmpleado.TxtHoraEntrada.setText("");
+                }
+            }
+        }
+        
+         //HoraSalida
+       if (e.getSource() == VistaEmpleado.TxtHoraSalida) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTime(VistaEmpleado.TxtHoraSalida.getText()) == true) {
+                    VistaEmpleado.TxtCorreo.requestFocus();
+                }else{
+                    VistaEmpleado.TxtHoraSalida.setText("");
+                }
+            }
+        }
+        
+          //Correo
+       if (e.getSource() == VistaEmpleado.TxtCorreo) {
+        if (e.getKeyChar() == e.VK_ENTER) {
+            if (validaCampoCorreo(VistaEmpleado.TxtCorreo.getText()) == true) {
+                VistaEmpleado.BtnGuardar.requestFocus();
+            }else{
+                VistaEmpleado.TxtCorreo.setText("");
+            }
+        }
+    }
 
    }
 
@@ -342,13 +492,109 @@ public class ControladorVistaEmpleado implements MouseListener, KeyListener {
 
    }
    
+    //Valida numeros
    private boolean validaCampoEntero(String Cadena, int longitud){
        if (Cadena.matches("[0-9, .]+") && Cadena.length()<longitud+1) {
            return true;
        }else{
-           JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de Teclear solo numeros y no debe de estar vacio el campo y la longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+           JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de usar solo numeros.\nNo debe de estar vacio el campo y\nla longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
            return false;
        }
    }
+   
+   //Valida floats
+   private boolean validaCampoFloat(String Cadena){
+    if (Cadena.matches("[+-]?([0-9]*[.])?[0-9]+")) {
+        return true;
+    }else{
+        JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de usar solo numeros f.\nNo debe de estar vacio el campo", "¡Alerta!", 0);
+        return false;
+    }
+}
+   
+    /*Valida texto 
+     Acepta letras (incluyendo ñ) sin numeros
+    */
+   private boolean validaCampoTexto(String Cadena, int longitud){
+       if (Cadena.matches("[a-z ñ A-Z]+") && Cadena.length()<longitud+1) {
+           return true;
+       }else{
+           JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de usar solo letras.\nNo debe de estar vacio el campo y\nla longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+           return false;
+       }
+   }
+   
+   /*Valida fecha aaaa-mm-dd
+     Requiere 0s y el año completo
+     
+     Valido 2020-11-23
+     (dia hasta 31)
+     (mes hasta 12)
+    */
     
+   String regexDate = "^[0-9]{4}-(1[0-2]|0[1-9])-(3[01]|[12][0-9]|0[1-9])$";
+   Pattern pattern = Pattern.compile(regexDate);
+   
+   private boolean validaCampoDate(String Cadena){
+        Matcher matcher = pattern.matcher(Cadena);
+        if (matcher.matches()) {
+                return true;
+        }else{
+            JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "La fecha esta en el formato incorrecto.\nNo debe de estar vacio el campo y\nel formato debe de ir aaaa-mm-dd \nincluyendo 0s y año completo.", "¡Alerta!", 0);
+            return false;
+        }
+   }
+   
+    /*Valida tiempo HH-MM-SS
+     El 0 inicial es opcional
+     
+     Valido 2:00:00 || 02:00:00
+     
+    */
+   String regexTime = "^([0-1]?[0-9]|[2][0-3]):([0-5][0-9])(:[0-5][0-9])$";
+   Pattern pattern2 = Pattern.compile(regexTime);
+   
+   private boolean validaCampoTime(String Cadena){
+       Matcher matcher = pattern2.matcher(Cadena);
+       if(matcher.matches()){
+           return true;
+       }else{
+        JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "La hora esta en el formato incorrecto.\nNo debe de estar vacio el campo y\nel formato debe de ir HH:MM:SS\n el 0 inicial es opcional.", "¡Alerta!", 0);
+           return false;
+       }
+   }
+   
+   /*Valida correo usuario@dominio.com || usuario@dominio.com.in
+     
+     No valido
+        usuario#dominio.com
+        @dominio.com
+    */
+    String regexCorreo = "^(.+)@(.+)$";
+    Pattern pattern3 = Pattern.compile(regexCorreo);
+    
+    private boolean validaCampoCorreo(String Cadena){
+        Matcher matcher = pattern3.matcher(Cadena);
+        if(matcher.matches()){
+            return true;
+        }else{
+         JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "El correo esta en el formato incorrecto.\nNo debe de estar vacio el campo y\nel formato debe de ir\nusuario@dominio.com o usuario@dominio.com.in", "¡Alerta!", 0);
+            return false;
+        }
+    }
+    
+     /*Valida telefono numeros y guion
+        
+        Valido 375-254-4875
+        No valido 3752544875 || 375--2544875
+     
+     */
+   private boolean validaCampoTel(String Cadena, int longitud){
+    if (Cadena.matches("^[0-9]([0-9]|-(?!-))+$") && Cadena.length()==12) {
+        return true;
+    }else{
+        JOptionPane.showMessageDialog(VistaEmpleado.getRootPane(), "Debes de usar solo numeros y guiones.\nNo debe de estar vacio el campo.\nEl formato es 000-000-0000 y\nla longitud no debe de ser mayor a\n"+longitud+" incluyendo guiones", "¡Alerta!", 0);
+        return false;
+    }
+}
 }

@@ -20,8 +20,10 @@ import vista.VistaBusquedaPorDescripcion;
 import vista.VistaBusquedaUsuarioPorDescripcion;
 // import vista.vistaUsuario;
 import vista.VistaUsuario;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class ControladorVistaUsuario implements MouseListener {
+public class ControladorVistaUsuario implements MouseListener, KeyListener {
     private VistaUsuario vistaUsuario;
     private ModeloUsuario modeloUsuario;
 
@@ -36,12 +38,20 @@ public class ControladorVistaUsuario implements MouseListener {
     }
 
     private void oyentes() {
+        //Oyentes mouse
         vistaUsuario.BtnSalir.addMouseListener(this);
         vistaUsuario.BtnGuardar.addMouseListener(this);
         vistaUsuario.BtnEliminar.addMouseListener(this);
         vistaUsuario.BtnActualizar.addMouseListener(this);
         vistaUsuario.BtnBuscar.addMouseListener(this);
         vistaUsuario.LblSearch.addMouseListener(this);
+        
+        //Oyentes teclado
+        vistaUsuario.TxtUsuario.addKeyListener(this);
+        vistaUsuario.TxtPassword.addKeyListener(this);
+        vistaUsuario.TxtNombre.addKeyListener(this);
+        vistaUsuario.TxtTipo.addKeyListener(this);
+        
 
     }
 
@@ -261,8 +271,109 @@ public class ControladorVistaUsuario implements MouseListener {
    }
     
    private String encriptarPassword(String Password) throws NoSuchAlgorithmException{
-    MessageDigest Md = MessageDigest.getInstance("MD5");
-    Md.update(Password.getBytes(), 0, Password.length());
-    return new BigInteger(1,Md.digest()).toString(16);
-}
+        MessageDigest Md = MessageDigest.getInstance("MD5");
+        Md.update(Password.getBytes(), 0, Password.length());
+        return new BigInteger(1,Md.digest()).toString(16);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        //usuario
+        if (e.getSource() == vistaUsuario.TxtUsuario) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoUser(vistaUsuario.TxtUsuario.getText(), 20) == true) {
+                    vistaUsuario.TxtPassword.requestFocus();
+                }else{
+                    vistaUsuario.TxtUsuario.setText("");
+                }
+            }
+        }
+        
+        //password
+        if (e.getSource() == vistaUsuario.TxtPassword) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoPass(vistaUsuario.TxtPassword.getText(), 40) == true) {
+                    vistaUsuario.TxtNombre.requestFocus();
+                }else{
+                    vistaUsuario.TxtPassword.setText("");
+                }
+            }
+        }
+        
+        //nombre
+        if (e.getSource() == vistaUsuario.TxtNombre) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTexto(vistaUsuario.TxtNombre.getText(), 80) == true) {
+                    vistaUsuario.TxtTipo.requestFocus();
+                }else{
+                    vistaUsuario.TxtNombre.setText("");
+                }
+            }
+        }
+        
+        //tipo
+        if (e.getSource() == vistaUsuario.TxtTipo) {
+            if (e.getKeyChar() == e.VK_ENTER) {
+                if (validaCampoTipo(vistaUsuario.TxtTipo.getText()) == true) {
+                    vistaUsuario.BtnGuardar.requestFocus();
+                }else{
+                    vistaUsuario.TxtTipo.setText("");
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+
+    }
+    
+    //Valida campos de puro texto incluyendo la ñ
+    private boolean validaCampoTexto(String Cadena, int longitud){
+        if (Cadena.matches("[a-z ñ A-Z]+") && Cadena.length()<longitud+1) {
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(vistaUsuario.getRootPane(), "Debes de usar solo letras.\nNo debe de estar vacio el campo y\nla longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+            return false;
+        }
+    }
+    
+    //Valida tipo de user
+    //SuperAdministrador || Registrado
+    private boolean validaCampoTipo(String Cadena){
+        if (Cadena.equals("SuperAdministrador") || Cadena.equals("Registrado")) {
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(vistaUsuario.getRootPane(), "No debe de estar vacio el campo.\nSolo se acepta SuperAdministrador y Registrado", "¡Alerta!", 0);
+            return false;
+        }
+    }
+    
+    //Valida Alphanumerico para user
+    private boolean validaCampoUser(String Cadena, int longitud){
+        if (Cadena.matches("^[a-zA-Z0-9]+$") && Cadena.length()<longitud+1) {
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(vistaUsuario.getRootPane(), "Debes de usar solo letras y numeros.\nNo debe de estar vacio el campo y\nla longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+            return false;
+        }
+    }
+    
+    //Valida password que no este muy largo
+    private boolean validaCampoPass(String Cadena, int longitud){
+        if (Cadena.length()<longitud+1) {
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(vistaUsuario.getRootPane(), "No debe de estar vacio el campo y\nla longitud no debe de ser mayor a "+longitud, "¡Alerta!", 0);
+            return false;
+        }
+    }
 }
