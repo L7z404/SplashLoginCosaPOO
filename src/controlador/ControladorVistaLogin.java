@@ -43,7 +43,8 @@ public class ControladorVistaLogin implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource()==VistaLogin.BtnCerrar){
-            VistaLogin.dispose();
+            // VistaLogin.dispose();
+            System.exit(0);
         }else if(e.getSource()==VistaLogin.BtnLogin){
             try {
                 buscarUsuarioPassword();

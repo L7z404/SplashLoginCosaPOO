@@ -42,7 +42,11 @@ public class ControladorVistaPantallaPrincipal implements MouseListener{
         if(e.getSource() == VistaPantallaPrincipal.exit){
             int opc = JOptionPane.showConfirmDialog(null, "Deseas Salir?", "Salir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (opc==0) {
-                System.exit(0);
+                VistaLogin vl = new VistaLogin();
+                ModeloUsuario mu = new ModeloUsuario();
+                ControladorVistaLogin cvl = new ControladorVistaLogin(vl, mu);
+                VistaPantallaPrincipal.dispose();
+                
             }
         }else if(e.getSource()==VistaPantallaPrincipal.cart){
             VistaProductos v = new VistaProductos(new JFrame(), true);

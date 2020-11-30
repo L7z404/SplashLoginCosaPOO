@@ -27,16 +27,17 @@ public class VistaBusquedaEmpleadoPorDescripcion extends JDialog {
 
 
     private void configuracionInicial() {
-        this.setSize(430,320);
+        // this.setSize(430,320);
+        this.setSize(600,400);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
     }
 
     private void agregarComponentes() {
-        LblNombre.setBounds(10,15,100,40);
-        TxtNombre.setBounds(130,15,200,40);
-        ScrollTabla.setBounds(20,70,378,130);
-        BtnAceptar.setBounds(150,230,120,40);
+        LblNombre.setBounds(10,15,150,40);
+        TxtNombre.setBounds(140,15,200,40);
+        ScrollTabla.setBounds(20,70,550,200);
+        BtnAceptar.setBounds(240,290,120,40);
         
         //agregar al frame
         this.add(LblNombre);

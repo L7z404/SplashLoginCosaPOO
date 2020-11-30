@@ -46,7 +46,7 @@ public class VistaBusquedaUsuarioPorDescripcion extends JDialog {
     }
     
     public static void main(String[] args){
-        VistaBusquedaEmpleadoPorDescripcion v = new VistaBusquedaEmpleadoPorDescripcion(new JFrame(), true);
+        VistaBusquedaUsuarioPorDescripcion v = new VistaBusquedaUsuarioPorDescripcion(new JFrame(), true);
         v.setVisible(true);
     }
 
