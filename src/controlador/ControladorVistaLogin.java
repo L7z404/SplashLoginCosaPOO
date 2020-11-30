@@ -60,7 +60,7 @@ public class ControladorVistaLogin implements MouseListener{
             VistaLogin.LblOcutarContra.setVisible(false);
             VistaLogin.LblVerContra.setVisible(true);
             VistaLogin.TxtPassword.setEchoChar((char)0);
-        }
+        } 
         
 
     }

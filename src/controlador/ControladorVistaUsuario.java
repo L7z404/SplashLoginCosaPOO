@@ -46,6 +46,9 @@ public class ControladorVistaUsuario implements MouseListener, KeyListener {
         vistaUsuario.BtnBuscar.addMouseListener(this);
         vistaUsuario.LblSearch.addMouseListener(this);
         
+        vistaUsuario.LblOcutarPass.addMouseListener(this);
+        vistaUsuario.LblVerPass.addMouseListener(this);
+        
         //Oyentes teclado
         vistaUsuario.TxtUsuario.addKeyListener(this);
         vistaUsuario.TxtPassword.addKeyListener(this);
@@ -85,13 +88,21 @@ public class ControladorVistaUsuario implements MouseListener, KeyListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
+        if (e.getSource() == vistaUsuario.LblOcutarPass) {
+            vistaUsuario.LblOcutarPass.setVisible(false);
+            vistaUsuario.LblVerPass.setVisible(true);
+            vistaUsuario.TxtPassword.setEchoChar((char)0);
+        } 
 
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
+        if (e.getSource() == vistaUsuario.LblOcutarPass) {
+            vistaUsuario.LblVerPass.setVisible(false);
+            vistaUsuario.LblOcutarPass.setVisible(true);
+            vistaUsuario.TxtPassword.setEchoChar('*');
+        }
 
     }
 
@@ -111,6 +122,12 @@ public class ControladorVistaUsuario implements MouseListener, KeyListener {
         }
         if (e.getSource() == vistaUsuario.BtnActualizar) {
             vistaUsuario.BtnActualizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+        if (e.getSource() == vistaUsuario.LblVerPass) {
+            vistaUsuario.LblVerPass.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
+        if (e.getSource() == vistaUsuario.LblOcutarPass) {
+            vistaUsuario.LblOcutarPass.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
 
     }

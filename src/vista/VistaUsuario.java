@@ -9,6 +9,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -17,17 +18,21 @@ public class VistaUsuario extends JDialog {
 
     // Icons
     ImageIcon ImSearch = new ImageIcon(getClass().getResource("/imagenes/search.png"));
+    ImageIcon ImEsconderPass = new ImageIcon(getClass().getResource("/imagenes/ocultarContra.png"));
+    ImageIcon ImVerPass = new ImageIcon(getClass().getResource("/imagenes/verContra.png"));
 
     // Cosas
     JLabel titulo = new JLabel("ABC de Usuarios");
     public JLabel LblSearch = new JLabel(ImSearch);
+    public JLabel LblOcutarPass = new JLabel(ImEsconderPass);
+    public JLabel LblVerPass = new JLabel(ImVerPass);
     JLabel LblUsuario = new JLabel("Usuario");
     JLabel LblPassword = new JLabel("Contraseña");
     JLabel LblNombre = new JLabel("Nombre");
     JLabel LblTipo = new JLabel("Tipo");
 
     public JTextField TxtUsuario = new JTextField();
-    public JTextField TxtPassword = new JTextField();
+    public JPasswordField TxtPassword = new JPasswordField();
     public JTextField TxtNombre = new JTextField();
     public JTextField TxtTipo = new JTextField();
 
@@ -79,6 +84,16 @@ public class VistaUsuario extends JDialog {
         TxtPassword.setBounds(220, 120, 200, 30);
         this.add(TxtPassword);
         
+        
+        //----------Ver y ocultar contra--------
+        LblOcutarPass.setBounds(340, 120, 200, 30);
+        this.add(LblOcutarPass);
+        
+        LblVerPass.setBounds(340, 120, 200, 30);
+        this.add(LblVerPass);
+        
+        //------------------------------
+        
         LblNombre.setBounds(165, 175, 50, 20);
         LblNombre.setForeground(Color.WHITE);
         this.add(LblNombre);
@@ -113,8 +128,8 @@ public class VistaUsuario extends JDialog {
         this.add(BtnSalir);
      }
      
-    //  public static void main(String[] args){
-    //      VistaUsuario vu = new VistaUsuario(new JFrame(), true);
-    //      vu.setVisible(true);
-    //  }
+     public static void main(String[] args){
+         VistaUsuario vu = new VistaUsuario(new JFrame(), true);
+         vu.setVisible(true);
+     }
 }
